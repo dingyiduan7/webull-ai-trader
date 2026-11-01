@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+build/
+dist/
+.local/
+.env
+.env.*
+.secrets/
+*.secret.json
+*.secret.clixml
+webull*_sdk.log*
+token.json
+conf/token.txt
+.pytest-tmp/

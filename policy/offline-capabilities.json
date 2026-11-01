@@ -1,0 +1,8 @@
+{
+  "version": "sim-v1",
+  "environment": "OFFLINE",
+  "entry_order_types": ["LIMIT", "STOP_LIMIT"],
+  "protection_mechanisms": ["BROKER_STOP_MARKET", "BROKER_STOP_LIMIT"],
+  "fractional_protection": false,
+  "certified_oco": false
+}

@@ -1,0 +1,12 @@
+{
+  "server_version": "PostgreSQL 17.11",
+  "fsync": "on",
+  "synchronous_commit": "on",
+  "restart_mode": "immediate",
+  "committed_state_preserved": true,
+  "inflight_transaction_rolled_back": true,
+  "stale_leader_fenced": true,
+  "old_unused_permits_revoked": true,
+  "reservations_preserved": true,
+  "journal_rebuild_matches": true
+}

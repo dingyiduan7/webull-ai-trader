@@ -1,0 +1,17 @@
+{
+  "strategy_id": "astra-discretionary-intraday-mvp-v1",
+  "version": "2",
+  "purpose": "Astra selects and evaluates an eligible US-listed liquid stock and may propose a long intraday entry only when it estimates positive expected return after costs; otherwise abstain.",
+  "owner_approved": true,
+  "exploratory_paper_only": true,
+  "proven_alpha": false,
+  "universe": "Dynamic market-wide Webull US_STOCK top-active set; deterministic price, volume, market-cap, common-stock, tradability, freshness and spread filters; Astra receives up to 10 eligible candidates",
+  "entry": "LIMIT DAY CORE; whole shares on the observed cent grid",
+  "protection": "LOCAL_MONITORED_STOP; no broker-native protection claim",
+  "episode_id": "mvp-<lowercase-symbol>",
+  "trailing": "NONE",
+  "targets": "Optional single full-position target; no partial allocation or OCO in MVP",
+  "conditions": "Current bid/ask/spread predicates only; no persistence or arbitrary code",
+  "cost_basis": "Observed prior one-share round trip had $0.02 sell fees and $0.01 price loss; not a production fee schedule",
+  "historical_profitability_required": false
+}

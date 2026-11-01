@@ -1,0 +1,167 @@
+{
+  "astra_action": "PROPOSE_ENTRY",
+  "risk_approved": true,
+  "order_submitted": false,
+  "generated_intent": {
+    "intent_id": "d5303ef0b1254ef08596a1b76095e284",
+    "client_order_id": "44014090de16472586f889a64095c531",
+    "account_id": "dryrun-f2a694e7766d4bc887d74bb68e0c766a",
+    "environment": "OFFLINE",
+    "instrument_id": "913256135",
+    "side": "BUY",
+    "quantity": "1",
+    "order_type": "LIMIT",
+    "session": "CORE",
+    "time_in_force": "DAY",
+    "limit_price_usd": "100.00",
+    "trigger_price_usd": null,
+    "maximum_entry_usd": "100.00",
+    "protection": {
+      "initial_stop_usd": "99",
+      "trigger_reference": "BID",
+      "trigger_source_id": "WEBULL_SANDBOX_READ_ONLY",
+      "execution_policy_id": "local-exit-v1",
+      "mechanism": "LOCAL_MONITORED_STOP",
+      "stop_limit_usd": null
+    },
+    "plan_id": "d5303ef0b1254ef08596a1b76095e284",
+    "episode_id": "mvp-aapl",
+    "deadline": "2026-09-11T14:01:00Z",
+    "capability_version": "mvp-local-monitor-v1"
+  },
+  "broker_status": "FILLED",
+  "mode": "DRY_RUN",
+  "session_gate": "OPEN",
+  "blocker": null,
+  "ai": {
+    "schema_valid": true,
+    "semantics_valid": true,
+    "decision": {
+      "schema_version": "1.0",
+      "decision_id": "d5303ef0b1254ef08596a1b76095e284",
+      "context_id": "89f27e9754ec4b469bd67e5715782e7c",
+      "context_hash": "4523460cad67597e3ea9bc69be3c65237e93edaffed0e70fdf2b18e9fe21aa5e",
+      "opportunity_id": "AAPL-owner-mvp",
+      "portfolio_state_version": "4",
+      "policy_hash": "207d306865dd8521741c51a13d229b570741fe04d71c58a38de1469bb7a4280a",
+      "capability_version": "mvp-local-monitor-v1",
+      "strategy_id": "astra-discretionary-intraday-mvp-v1",
+      "strategy_version": "2",
+      "strategy_artifact_hash": "ea4e4cd6ec056067f60954095c322366136da5b5a2f1e97d3a2625c009f39a7a",
+      "created_at": "2026-09-11T14:00:00Z",
+      "valid_until": "2026-09-11T14:01:30Z",
+      "action": "PROPOSE_ENTRY",
+      "entry_plan": {
+        "instrument_id": "913256135",
+        "ticker": "AAPL",
+        "direction": "LONG",
+        "entry_condition": {
+          "join": "ALL",
+          "predicates": [
+            {
+              "feature_id": "bid",
+              "source_id": "WEBULL_SANDBOX_READ_ONLY",
+              "operator": "GT",
+              "value": "90",
+              "persistence_ms": 0
+            }
+          ]
+        },
+        "entry_order_type": "LIMIT",
+        "session": "CORE",
+        "time_in_force": "DAY",
+        "maximum_entry_usd": "100.00",
+        "limit_price_usd": "100.00",
+        "trigger_price_usd": null,
+        "entry_expires_at": "2026-09-11T14:01:00Z",
+        "sizing": {
+          "unit": "SHARES",
+          "amount": "1",
+          "minimum_acceptable_quantity": "1"
+        },
+        "protection": {
+          "initial_stop_usd": "99",
+          "trigger_reference": "BID",
+          "trigger_source_id": "WEBULL_SANDBOX_READ_ONLY",
+          "execution_policy_id": "local-exit-v1",
+          "mechanism": "LOCAL_MONITORED_STOP",
+          "stop_limit_usd": null
+        },
+        "targets": [],
+        "trailing": {
+          "rule_id": "none",
+          "mode": "NONE",
+          "activation_rule": null,
+          "distance": null
+        },
+        "max_holding_seconds": 300,
+        "latest_exit_at": "2026-09-11T14:05:00Z",
+        "invalidation": {
+          "join": "ALL",
+          "predicates": [
+            {
+              "feature_id": "bid",
+              "source_id": "WEBULL_SANDBOX_READ_ONLY",
+              "operator": "LT",
+              "value": "90",
+              "persistence_ms": 0
+            }
+          ]
+        },
+        "partial_fill_policy_id": "halt-reconcile",
+        "max_spread_bps": "20",
+        "strategy_episode_id": "mvp-aapl"
+      },
+      "amendment": null,
+      "exit_request": null,
+      "data_request": null,
+      "forecast": {
+        "event_definition": "Synthetic test only, not an Astra decision",
+        "horizon_seconds": 300,
+        "raw_probability": null,
+        "expected_gross_return_bps": "20",
+        "estimated_execution_cost_bps": "5",
+        "net_return_quantile_10_bps": null,
+        "net_return_quantile_50_bps": null,
+        "net_return_quantile_90_bps": null,
+        "calibration_id": null,
+        "estimate_provenance": "MODEL_JUDGMENT"
+      },
+      "evidence_ids": [
+        "fc9d8b84901b403f9b9ea44ae661a24f"
+      ],
+      "contradictions": [],
+      "missing_data": [],
+      "reasoning_summary": "CONTROLLED SYNTHETIC EXECUTION PATH TEST ONLY",
+      "review_triggers": []
+    },
+    "origin": "CONTROLLED_SYNTHETIC_FIXTURE_NOT_ASTRA",
+    "estimated_cost_usd": "0"
+  },
+  "broker": {
+    "status": "FILLED",
+    "filled_quantity": "1",
+    "filled_price": "100.00",
+    "fees_usd": "0",
+    "origin": "SIMULATED_DRY_RUN"
+  },
+  "resulting_positions": {
+    "913256135": {
+      "mark_usd": "99.99",
+      "quantity": "1",
+      "stop_usd": "99",
+      "basis_usd": "100.00",
+      "episode_id": "mvp-aapl",
+      "exposure_usd": "99.99",
+      "instrument_id": "913256135",
+      "open_risk_usd": "2.12000",
+      "entry_risk_usd": "2.12000",
+      "originating_orders": [
+        "d5303ef0b1254ef08596a1b76095e284"
+      ],
+      "protected_quantity": "0"
+    }
+  },
+  "origin": "CONTROLLED_SYNTHETIC_FIXTURE_NOT_ASTRA",
+  "simulated_orders": 1
+}

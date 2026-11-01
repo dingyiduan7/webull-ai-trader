@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "decision_id": "6383b27f02f147b1803b3db11f4c0c2e",
+  "context_id": "84407c9e82b84b7987206e905d1df7c5",
+  "context_hash": "d528475d02c8ed99afc4c5e145b242b322bf7ce58c80cf318e84f802e3cebe4c",
+  "opportunity_id": "AAPL-manual-probe",
+  "portfolio_state_version": "observation-2cc20211e28a40a3a7865f94ac3fbb18",
+  "policy_hash": "ecda23b8ccdd3748a4bf70214a834370067b4d34851fd17e0d2d2798ac806dd9",
+  "capability_version": "m3b-observational-no-protection",
+  "strategy_id": "decision-path-probe",
+  "strategy_version": "1",
+  "strategy_artifact_hash": "2fcc7c7b96250576484391d181a231538fdc519471f12952e61fa8efe93ead32",
+  "created_at": "2026-09-11T19:52:32.881358Z",
+  "valid_until": "2026-09-11T19:54:02.881358Z",
+  "action": "ABSTAIN",
+  "entry_plan": null,
+  "amendment": null,
+  "exit_request": null,
+  "data_request": null,
+  "forecast": null,
+  "evidence_ids": [
+    "observed-balance",
+    "observed-positions",
+    "observed-orders",
+    "observed-instruments",
+    "observed-bars",
+    "observed-snapshot"
+  ],
+  "contradictions": [],
+  "missing_data": [
+    "Certified protection mechanism and supported protection execution policy.",
+    "Confirmed settlement and reconciled portfolio ledger and equity.",
+    "Certified market-data entitlement and actual delay.",
+    "Verified tradability, liquidity eligibility and broker quantity and price increments.",
+    "Qualified strategy artifact and evidence supporting positive expected net return.",
+    "Start-of-day risk equity and verified daily-loss, drawdown and experiment-death headroom."
+  ],
+  "reasoning_summary": "Entry is blocked by supplied constraints: the instrument is marked nontradable and nonliquid, and capabilities provide no protection mechanism. Settlement remains unknown, market-data entitlement is uncertified, and account observations are not a reconciled ledger. The bound artifact is a probe prompt, not a qualified trading strategy; the quote and short bar history do not establish positive expected profit after costs. Abstain rather than invent prerequisites, a forecast or an executable plan.",
+  "review_triggers": []
+}

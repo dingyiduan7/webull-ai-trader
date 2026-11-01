@@ -1,0 +1,256 @@
+{
+  "no_trade": true,
+  "broker_order_calls": 0,
+  "decision_requests": 1,
+  "model": "gpt-6-astra",
+  "context": {
+    "context_id": "84407c9e82b84b7987206e905d1df7c5",
+    "decision_id": "6383b27f02f147b1803b3db11f4c0c2e",
+    "opportunity_id": "AAPL-manual-probe",
+    "account": {
+      "account_id": "sandbox-observation-only",
+      "environment": "OFFLINE",
+      "account_type": "CASH",
+      "balances": {
+        "settled_usd": "999667.24",
+        "reserved_usd": "0",
+        "unsettled_usd": "332.73",
+        "pending_deposits_usd": "0",
+        "provisional_buying_power_usd": "999999.97",
+        "accrued_fees_usd": "0",
+        "settlement_known": false
+      },
+      "settlement_semantics": "CONFIRMED_SETTLED_ONLY",
+      "positions": [],
+      "outstanding_order_ids": [],
+      "observed_at": "2026-09-11T19:52:16.927797Z",
+      "reconciliation_version": "observation-2cc20211e28a40a3a7865f94ac3fbb18",
+      "broker_equity_usd": "999999.97",
+      "liquidation_equity_usd": "999999.97",
+      "economic_equity_usd": "999999.97"
+    },
+    "strategy_id": "decision-path-probe",
+    "strategy_version": "1",
+    "strategy_artifact_hash": "2fcc7c7b96250576484391d181a231538fdc519471f12952e61fa8efe93ead32",
+    "prompt_version": "astra-probe-1",
+    "policy_hash": "ecda23b8ccdd3748a4bf70214a834370067b4d34851fd17e0d2d2798ac806dd9",
+    "as_of": "2026-09-11T19:52:32.881358Z",
+    "expires_at": "2026-09-11T19:54:02.881358Z",
+    "instrument": {
+      "instrument_id": "913256135",
+      "ticker": "AAPL",
+      "country": "US",
+      "asset_type": "STOCK",
+      "listing_exchange": "NSQ",
+      "liquid": false,
+      "tradable": false,
+      "halted": false,
+      "quantity_increment": "1",
+      "price_increment_usd": "0.01",
+      "minimum_quantity": "1"
+    },
+    "capabilities": {
+      "version": "m3b-observational-no-protection",
+      "environment": "OFFLINE",
+      "entry_order_types": [
+        "LIMIT"
+      ],
+      "protection_mechanisms": [],
+      "fractional_protection": false,
+      "certified_oco": false
+    },
+    "session_label": "2026-09-11",
+    "session_open": "2026-09-11T13:30:00Z",
+    "session_close": "2026-09-11T20:00:00Z",
+    "liquidation_at": "2026-09-11T19:55:00Z",
+    "market": {
+      "instrument_id": "913256135",
+      "event_type": "QUOTE",
+      "bid_usd": "332.32",
+      "ask_usd": "332.34",
+      "trade_price_usd": null,
+      "quantity": null,
+      "conditions": [],
+      "source_event_at": "2026-09-11T19:52:32.532000Z",
+      "received_at": "2026-09-11T19:52:32.880373Z",
+      "entitled": false,
+      "delay_ms": 0,
+      "quality_flags": [
+        "ENTITLEMENT_NOT_CERTIFIED"
+      ],
+      "raw_reference": "observed-snapshot"
+    },
+    "features": [
+      {
+        "feature_id": "bid",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "value": "332.32",
+        "value_type": "DECIMAL",
+        "allowed_values": [],
+        "usable_at": "2026-09-11T19:52:32.881358Z"
+      },
+      {
+        "feature_id": "ask",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "value": "332.34",
+        "value_type": "DECIMAL",
+        "allowed_values": [],
+        "usable_at": "2026-09-11T19:52:32.881358Z"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "observed-accounts",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:13.844896Z",
+        "received_at": "2026-09-11T19:52:13.844896Z",
+        "usable_at": "2026-09-11T19:52:13.844896Z",
+        "revision": "1",
+        "text": "[{\"account_id\": \"private-001\", \"account_number\": \"private-002\", \"account_type\": \"CASH\", \"account_label\": \"private-003\", \"account_class\": \"INDIVIDUAL_CASH\", \"user_id\": \"private-004\"}]"
+      },
+      {
+        "evidence_id": "observed-balance",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:16.927797Z",
+        "received_at": "2026-09-11T19:52:16.927797Z",
+        "usable_at": "2026-09-11T19:52:16.927797Z",
+        "revision": "1",
+        "text": "{\"total_asset_currency\": \"USD\", \"total_net_liquidation_value\": \"999999.97\", \"total_market_value\": \"0.00\", \"total_cash_balance\": \"999999.97\", \"total_unrealized_profit_loss\": \"0.00\", \"total_day_profit_loss\": \"-0.03\", \"account_currency_assets\": [{\"currency\": \"USD\", \"net_liquidation_value\": \"999999.97\", \"market_value\": \"0.00\", \"cash_balance\": \"999999.97\", \"settled_cash\": \"999667.24\", \"unsettled_cash\": \"332.73\", \"buying_power\": \"999999.97\", \"option_buying_power\": \"999999.97\", \"night_trading_buying_power\": \"999667.24\", \"unrealized_profit_loss\": \"0.00\", \"day_profit_loss\": \"-0.03\"}]}"
+      },
+      {
+        "evidence_id": "observed-positions",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:20.102950Z",
+        "received_at": "2026-09-11T19:52:20.102950Z",
+        "usable_at": "2026-09-11T19:52:20.102950Z",
+        "revision": "1",
+        "text": "[]"
+      },
+      {
+        "evidence_id": "observed-orders",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:23.238064Z",
+        "received_at": "2026-09-11T19:52:23.238064Z",
+        "usable_at": "2026-09-11T19:52:23.238064Z",
+        "revision": "1",
+        "text": "{\"data\": []}"
+      },
+      {
+        "evidence_id": "observed-instruments",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:26.291420Z",
+        "received_at": "2026-09-11T19:52:26.291420Z",
+        "usable_at": "2026-09-11T19:52:26.291420Z",
+        "revision": "1",
+        "text": "{\"data\": [{\"name\": \"<redacted:string>\", \"category\": \"US_STOCK\", \"symbol\": \"AAPL\", \"status\": \"OC\", \"currency\": \"USD\", \"instrument_id\": \"913256135\", \"exchange_code\": \"NSQ\", \"shortable\": true, \"fractionable\": true, \"marginable\": true, \"overnight_trading_supported\": true, \"margin_requirement_long\": \"<redacted:string>\", \"margin_requirement_short\": \"<redacted:string>\", \"easy_to_borrow\": true, \"lot_size\": \"1.0000000000\", \"etf_leveraged_flag\": \"<redacted:string>\", \"maintenance_margin_long\": \"<redacted:string>\", \"maintenance_margin_short\": \"<redacted:string>\", \"intraday_margin_long\": \"<redacted:string>\", \"intraday_margin_short\": \"<redacted:string>\", \"sub_category\": \"COMMON_STOCK\"}]}"
+      },
+      {
+        "evidence_id": "observed-bars",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:29.698254Z",
+        "received_at": "2026-09-11T19:52:29.698254Z",
+        "usable_at": "2026-09-11T19:52:29.698254Z",
+        "revision": "1",
+        "text": "{\"result\": [{\"symbol\": \"AAPL\", \"result\": [{\"time\": \"2026-09-11T19:51:00.000+0000\", \"open\": \"332.35\", \"close\": \"332.34\", \"high\": \"332.425\", \"low\": \"332.27\", \"volume\": \"117409\", \"trading_session\": \"RTH\"}, {\"time\": \"2026-09-11T19:50:00.000+0000\", \"open\": \"332.70\", \"close\": \"332.34\", \"high\": \"332.70\", \"low\": \"332.25\", \"volume\": \"152692\", \"trading_session\": \"RTH\"}, {\"time\": \"2026-09-11T19:49:00.000+0000\", \"open\": \"332.71\", \"close\": \"332.71\", \"high\": \"332.7992\", \"low\": \"332.66\", \"volume\": \"109609\", \"trading_session\": \"RTH\"}, {\"time\": \"2026-09-11T19:48:00.000+0000\", \"open\": \"332.64\", \"close\": \"332.70\", \"high\": \"332.70\", \"low\": \"332.61\", \"volume\": \"55900\", \"trading_session\": \"RTH\"}, {\"time\": \"2026-09-11T19:47:00.000+0000\", \"open\": \"332.52\", \"close\": \"332.645\", \"high\": \"332.68\", \"low\": \"332.48\", \"volume\": \"47638\", \"trading_session\": \"RTH\"}], \"instrument_id\": \"913256135\"}]}"
+      },
+      {
+        "evidence_id": "observed-snapshot",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T19:52:32.880373Z",
+        "received_at": "2026-09-11T19:52:32.880373Z",
+        "usable_at": "2026-09-11T19:52:32.880373Z",
+        "revision": "1",
+        "text": "[{\"symbol\": \"AAPL\", \"price\": \"332.325\", \"open\": \"327.63\", \"high\": \"336.22\", \"low\": \"326.30\", \"volume\": \"40246412\", \"change\": \"5.755\", \"close\": \"332.325\", \"instrument_id\": \"913256135\", \"pre_close\": \"326.57\", \"change_ratio\": \"0.017623\", \"last_trade_time\": 1789156352581, \"ask\": \"332.34\", \"ask_size\": \"227\", \"bid\": \"332.32\", \"bid_size\": \"30\", \"quote_time\": 1789156352532, \"pb_ratio\": \"<redacted:string>\", \"ps_ratio\": \"<redacted:string>\", \"pe_ratio\": \"<redacted:string>\", \"market_value\": \"4850010868500.000\", \"neg_market_value\": \"<redacted:string>\", \"yield\": \"<redacted:string>\", \"total_shares\": \"<redacted:string>\", \"out_standing_shares\": \"<redacted:string>\", \"fifty_two_wk_high\": \"<redacted:string>\", \"fifty_two_wk_low\": \"<redacted:string>\", \"turnover\": \"<redacted:string>\", \"eps\": \"<redacted:string>\", \"eps_ttm\": \"<redacted:string>\", \"lot_size\": \"1\", \"bps\": \"<redacted:string>\", \"list_status\": \"LISTED\"}]"
+      }
+    ],
+    "warnings": [
+      "SANDBOX_OBSERVATION_NOT_RECONCILED_LEDGER",
+      "PROTECTION_NOT_CERTIFIED",
+      "SETTLEMENT_NOT_FINAL",
+      "INCREMENTS_ARE_TEST_GRID_NOT_BROKER_MINIMUM",
+      "NO_QUALIFIED_STRATEGY",
+      "DELAY_ZERO_IS_PLACEHOLDER_ENTITLEMENT_FALSE",
+      "EVIDENCE_PUBLISHED_AT_IS_RECEIPT_NOT_SOURCE_PUBLICATION"
+    ],
+    "prior_decision_ids": [],
+    "memory_evidence_ids": [],
+    "allowed_actions": [
+      "PROPOSE_ENTRY",
+      "ABSTAIN",
+      "REQUEST_DATA"
+    ],
+    "evaluation_horizon_seconds": 300,
+    "expected_cost_usd": "0.50",
+    "expected_latency_ms": 30000,
+    "review_reason": "Owner-requested one-shot decision API certification"
+  },
+  "requested_model": "gpt-6-astra",
+  "schema_valid": true,
+  "semantics_valid": true,
+  "latency_ms": 12171,
+  "usage": {
+    "input_tokens": 5164,
+    "input_tokens_details": {
+      "cache_write_tokens": 5161,
+      "cached_tokens": 0
+    },
+    "output_tokens": 633,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 5797
+  },
+  "estimated_cost_usd": "0.0961925",
+  "decision": {
+    "schema_version": "1.0",
+    "decision_id": "6383b27f02f147b1803b3db11f4c0c2e",
+    "context_id": "84407c9e82b84b7987206e905d1df7c5",
+    "context_hash": "d528475d02c8ed99afc4c5e145b242b322bf7ce58c80cf318e84f802e3cebe4c",
+    "opportunity_id": "AAPL-manual-probe",
+    "portfolio_state_version": "observation-2cc20211e28a40a3a7865f94ac3fbb18",
+    "policy_hash": "ecda23b8ccdd3748a4bf70214a834370067b4d34851fd17e0d2d2798ac806dd9",
+    "capability_version": "m3b-observational-no-protection",
+    "strategy_id": "decision-path-probe",
+    "strategy_version": "1",
+    "strategy_artifact_hash": "2fcc7c7b96250576484391d181a231538fdc519471f12952e61fa8efe93ead32",
+    "created_at": "2026-09-11T19:52:32.881358Z",
+    "valid_until": "2026-09-11T19:54:02.881358Z",
+    "action": "ABSTAIN",
+    "entry_plan": null,
+    "amendment": null,
+    "exit_request": null,
+    "data_request": null,
+    "forecast": null,
+    "evidence_ids": [
+      "observed-balance",
+      "observed-positions",
+      "observed-orders",
+      "observed-instruments",
+      "observed-bars",
+      "observed-snapshot"
+    ],
+    "contradictions": [],
+    "missing_data": [
+      "Certified protection mechanism and supported protection execution policy.",
+      "Confirmed settlement and reconciled portfolio ledger and equity.",
+      "Certified market-data entitlement and actual delay.",
+      "Verified tradability, liquidity eligibility and broker quantity and price increments.",
+      "Qualified strategy artifact and evidence supporting positive expected net return.",
+      "Start-of-day risk equity and verified daily-loss, drawdown and experiment-death headroom."
+    ],
+    "reasoning_summary": "Entry is blocked by supplied constraints: the instrument is marked nontradable and nonliquid, and capabilities provide no protection mechanism. Settlement remains unknown, market-data entitlement is uncertified, and account observations are not a reconciled ledger. The bound artifact is a probe prompt, not a qualified trading strategy; the quote and short bar history do not establish positive expected profit after costs. Abstain rather than invent prerequisites, a forecast or an executable plan.",
+    "review_triggers": []
+  },
+  "result": "VALID_PROPOSAL_ONLY",
+  "cost_basis": {
+    "currency": "USD",
+    "rates_per_million": {
+      "uncached_input": "10",
+      "cached_input": "1",
+      "cache_write": "12.50",
+      "output": "50"
+    },
+    "pricing_source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "estimate_not_invoice": true
+  }
+}

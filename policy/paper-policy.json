@@ -1,0 +1,18 @@
+{
+  "environment": "OFFLINE",
+  "account_exposure": "1",
+  "stock_exposure": "0.40",
+  "maximum_positions": 5,
+  "trade_risk": "0.015",
+  "open_risk": "0.05",
+  "daily_loss": "0.05",
+  "drawdown": "0.20",
+  "experiment_death": "0.90",
+  "margin": false,
+  "borrowing": false,
+  "money_movement": false,
+  "direction": "LONG_ONLY",
+  "universe": "US_LISTED_LIQUID_STOCKS",
+  "session": "CORE",
+  "drawdown_restart": "AUTHENTICATED_OWNER_NEW_SEGMENT"
+}

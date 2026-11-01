@@ -1,0 +1,200 @@
+{
+  "mode": "DRY_RUN",
+  "order_submitted": false,
+  "risk_approved": false,
+  "session_gate": "CLOSED_OR_ENTRY_CUTOFF",
+  "model": "gpt-6-astra",
+  "reasoning": "medium",
+  "source": "REAL_MODEL_NOT_SYNTHETIC",
+  "ai": {
+    "requested_model": "gpt-6-astra",
+    "reasoning": "medium",
+    "no_trade": true,
+    "schema_valid": true,
+    "semantics_valid": true,
+    "latency_ms": 10635,
+    "usage": {
+      "input_tokens": 4171,
+      "input_tokens_details": {
+        "cache_write_tokens": 4168,
+        "cached_tokens": 0
+      },
+      "output_tokens": 524,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4695
+    },
+    "estimated_cost_usd": "0.07833",
+    "decision": {
+      "schema_version": "1.0",
+      "decision_id": "1630debbd19f41f9892240813164fb19",
+      "context_id": "cb46a75cd75a4f47b6c25d26f5b8698a",
+      "context_hash": "8c95eddff22f9cf13baabca926d4adac54615119f981e4114685b80b1a16ecb0",
+      "opportunity_id": "AAPL-owner-mvp",
+      "portfolio_state_version": "0",
+      "policy_hash": "ecda23b8ccdd3748a4bf70214a834370067b4d34851fd17e0d2d2798ac806dd9",
+      "capability_version": "mvp-local-monitor-v1",
+      "strategy_id": "astra-discretionary-intraday-mvp-v1",
+      "strategy_version": "1",
+      "strategy_artifact_hash": "4dc34abadf7e50c4d0300861bea7aa1133d2e477b6a8e1bebdd141a7dd0c2e14",
+      "created_at": "2026-09-11T20:15:45.571932Z",
+      "valid_until": "2026-09-11T20:17:15.571932Z",
+      "action": "ABSTAIN",
+      "entry_plan": null,
+      "amendment": null,
+      "exit_request": null,
+      "data_request": null,
+      "forecast": null,
+      "evidence_ids": [
+        "c694a5caf7b74228a7b379f87b70c829"
+      ],
+      "contradictions": [],
+      "missing_data": [
+        "Fresh eligible core-session quote.",
+        "Reconciled portfolio and risk state."
+      ],
+      "reasoning_summary": "No compliant entry window remains: the supplied evaluation time is after both the 19:55 UTC liquidation deadline and the 20:00 UTC core-session close. The quote is also flagged stale and analysis-only, and the ledger is flagged unreconciled. A narrow quoted spread and exploratory paper approval do not override these constraints. Abstain; a quote refresh alone cannot resolve the closed-session restriction.",
+      "review_triggers": []
+    },
+    "model": "gpt-6-astra",
+    "result": "VALID_PROPOSAL_ONLY"
+  },
+  "astra_action": "ABSTAIN",
+  "context": {
+    "context_id": "cb46a75cd75a4f47b6c25d26f5b8698a",
+    "decision_id": "1630debbd19f41f9892240813164fb19",
+    "opportunity_id": "AAPL-owner-mvp",
+    "account": {
+      "account_id": "sandbox-observation",
+      "environment": "OFFLINE",
+      "account_type": "CASH",
+      "balances": {
+        "settled_usd": "999667.24",
+        "reserved_usd": "0",
+        "unsettled_usd": "332.73",
+        "pending_deposits_usd": "0",
+        "provisional_buying_power_usd": "0",
+        "accrued_fees_usd": "0",
+        "settlement_known": true
+      },
+      "settlement_semantics": "CONFIRMED_SETTLED_ONLY",
+      "positions": [],
+      "outstanding_order_ids": [],
+      "observed_at": "2026-09-11T20:15:43.997441Z",
+      "reconciliation_version": "0",
+      "broker_equity_usd": "999999.97",
+      "liquidation_equity_usd": "999999.97",
+      "economic_equity_usd": "999999.97"
+    },
+    "strategy_id": "astra-discretionary-intraday-mvp-v1",
+    "strategy_version": "1",
+    "strategy_artifact_hash": "4dc34abadf7e50c4d0300861bea7aa1133d2e477b6a8e1bebdd141a7dd0c2e14",
+    "prompt_version": "mvp-1",
+    "policy_hash": "ecda23b8ccdd3748a4bf70214a834370067b4d34851fd17e0d2d2798ac806dd9",
+    "as_of": "2026-09-11T20:15:45.571932Z",
+    "expires_at": "2026-09-11T20:17:15.571932Z",
+    "instrument": {
+      "instrument_id": "913256135",
+      "ticker": "AAPL",
+      "country": "US",
+      "asset_type": "STOCK",
+      "listing_exchange": "NSQ",
+      "liquid": true,
+      "tradable": true,
+      "halted": false,
+      "quantity_increment": "1",
+      "price_increment_usd": "0.01",
+      "minimum_quantity": "1"
+    },
+    "capabilities": {
+      "version": "mvp-local-monitor-v1",
+      "environment": "OFFLINE",
+      "entry_order_types": [
+        "LIMIT"
+      ],
+      "protection_mechanisms": [
+        "LOCAL_MONITORED_STOP"
+      ],
+      "fractional_protection": false,
+      "certified_oco": false
+    },
+    "session_label": "2026-09-11",
+    "session_open": "2026-09-11T13:30:00Z",
+    "session_close": "2026-09-11T20:00:00Z",
+    "liquidation_at": "2026-09-11T19:55:00Z",
+    "market": {
+      "instrument_id": "913256135",
+      "event_type": "QUOTE",
+      "bid_usd": "332.50",
+      "ask_usd": "332.53",
+      "trade_price_usd": null,
+      "quantity": null,
+      "conditions": [],
+      "source_event_at": "2026-09-11T20:15:08.328000Z",
+      "received_at": "2026-09-11T20:15:43.997441Z",
+      "entitled": true,
+      "delay_ms": 0,
+      "quality_flags": [
+        "STALE_OBSERVATION_ANALYSIS_ONLY",
+        "SESSION_CLOSED_OR_LIQUIDATING",
+        "LEDGER_NOT_RECONCILED_ANALYSIS_ONLY"
+      ],
+      "raw_reference": "c694a5caf7b74228a7b379f87b70c829"
+    },
+    "features": [
+      {
+        "feature_id": "bid",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "value": "332.50",
+        "value_type": "DECIMAL",
+        "allowed_values": [],
+        "usable_at": "2026-09-11T20:15:45.571932Z"
+      },
+      {
+        "feature_id": "ask",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "value": "332.53",
+        "value_type": "DECIMAL",
+        "allowed_values": [],
+        "usable_at": "2026-09-11T20:15:45.571932Z"
+      },
+      {
+        "feature_id": "spread_bps",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "value": "0.902256",
+        "value_type": "DECIMAL",
+        "allowed_values": [],
+        "usable_at": "2026-09-11T20:15:45.571932Z"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "c694a5caf7b74228a7b379f87b70c829",
+        "source_id": "WEBULL_SANDBOX_READ_ONLY",
+        "published_at": "2026-09-11T20:15:45.571932Z",
+        "received_at": "2026-09-11T20:15:45.571932Z",
+        "usable_at": "2026-09-11T20:15:45.571932Z",
+        "revision": "1",
+        "text": "{\"bars\": [{\"time\": \"2026-09-11T19:59:00.000+0000\", \"open\": \"332.52\", \"high\": \"332.65\", \"low\": \"332.07\", \"close\": \"332.27\", \"volume\": \"6356852\"}, {\"time\": \"2026-09-11T19:58:00.000+0000\", \"open\": \"332.56\", \"high\": \"332.68\", \"low\": \"332.49\", \"close\": \"332.54\", \"volume\": \"363523\"}, {\"time\": \"2026-09-11T19:57:00.000+0000\", \"open\": \"332.54\", \"high\": \"332.64\", \"low\": \"332.49\", \"close\": \"332.58\", \"volume\": \"176348\"}, {\"time\": \"2026-09-11T19:56:00.000+0000\", \"open\": \"332.77\", \"high\": \"332.81\", \"low\": \"332.50\", \"close\": \"332.53\", \"volume\": \"154225\"}, {\"time\": \"2026-09-11T19:55:00.000+0000\", \"open\": \"332.425\", \"high\": \"332.89\", \"low\": \"332.39\", \"close\": \"332.776\", \"volume\": \"190762\"}], \"bid\": \"332.50\", \"ask\": \"332.53\", \"spread_bps\": \"0.902256\", \"positions\": {}, \"open_orders\": [], \"observed_costs\": {\"prior_sell_fee_per_share\": \"0.02\", \"production_schedule_certified\": false}, \"strategy\": {\"strategy_id\": \"astra-discretionary-intraday-mvp-v1\", \"version\": \"1\", \"purpose\": \"Astra evaluates current AAPL context and may propose a long intraday entry only when it estimates positive expected return after costs; otherwise abstain.\", \"owner_approved\": true, \"exploratory_paper_only\": true, \"proven_alpha\": false, \"universe\": [\"AAPL\"], \"entry\": \"LIMIT DAY CORE; whole shares on the observed cent grid\", \"protection\": \"LOCAL_MONITORED_STOP; no broker-native protection claim\", \"episode_id\": \"mvp-aapl\", \"trailing\": \"NONE\", \"targets\": \"Optional single full-position target; no partial allocation or OCO in MVP\", \"conditions\": \"Current bid/ask/spread predicates only; no persistence or arbitrary code\", \"cost_basis\": \"Observed prior one-share round trip had $0.02 sell fees and $0.01 price loss; not a production fee schedule\", \"historical_profitability_required\": false}, \"grid_note\": \"Observed sandbox 1-share/cent-aligned capability, not a universal minimum\", \"entitlement_note\": \"Successful sandbox HTTP sample and current age check, not a real-time package guarantee\"}"
+      }
+    ],
+    "warnings": [
+      "STALE_OBSERVATION_ANALYSIS_ONLY",
+      "SESSION_CLOSED_OR_LIQUIDATING",
+      "LEDGER_NOT_RECONCILED_ANALYSIS_ONLY"
+    ],
+    "prior_decision_ids": [],
+    "memory_evidence_ids": [],
+    "allowed_actions": [
+      "PROPOSE_ENTRY",
+      "ABSTAIN",
+      "REQUEST_DATA"
+    ],
+    "evaluation_horizon_seconds": 300,
+    "expected_cost_usd": "0.10",
+    "expected_latency_ms": 15000,
+    "review_reason": "Owner-approved exploratory intraday paper strategy"
+  },
+  "blocker": "SESSION_CLOSED_EXECUTION_BLOCKED"
+}

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-trader"
+version = "0.3.0"
+description = "M3B: bounded sandbox certification harness; no production execution"
+requires-python = ">=3.13,<3.14"
+dependencies = ["pydantic==2.11.7", "jsonschema==4.25.1", "tzdata==2025.2", "psycopg[binary]==3.2.10", "requests==2.34.2"]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2", "hypothesis==6.139.2"]
+sandbox = ["webull-openapi-python-sdk==3.0.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+autonomous_trader = ["trade-decision.schema.json", "alpha-decision.schema.json"]
+"autonomous_trader.durable" = ["*.sql"]
+"autonomous_trader.mvp" = ["*.json"]
+"autonomous_trader.monitoring" = ["*.html"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+# Repo-local temp dir: the shared %TEMP%\\pytest-of-<user> folder can be left locked by other tools.
+addopts = "-ra --basetemp=.pytest-tmp"

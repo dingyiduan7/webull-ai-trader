@@ -1,0 +1,333 @@
+{
+  "$defs": {
+    "AlphaClose": {
+      "additionalProperties": false,
+      "properties": {
+        "position_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Position Id",
+          "type": "string"
+        },
+        "full_close": {
+          "const": true,
+          "title": "Full Close",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "position_id",
+        "full_close"
+      ],
+      "title": "AlphaClose",
+      "type": "object"
+    },
+    "AlphaHold": {
+      "additionalProperties": false,
+      "properties": {
+        "position_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Position Id",
+          "type": "string"
+        },
+        "next_review_at": {
+          "format": "date-time",
+          "title": "Next Review At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "position_id",
+        "next_review_at"
+      ],
+      "title": "AlphaHold",
+      "type": "object"
+    },
+    "AlphaModify": {
+      "additionalProperties": false,
+      "properties": {
+        "position_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Position Id",
+          "type": "string"
+        },
+        "requested_stop_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Requested Stop Usd"
+        },
+        "target_action": {
+          "enum": [
+            "KEEP",
+            "SET",
+            "REMOVE"
+          ],
+          "title": "Target Action",
+          "type": "string"
+        },
+        "requested_target_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Requested Target Usd"
+        },
+        "requested_next_review_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Requested Next Review At"
+        },
+        "requested_latest_exit_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Requested Latest Exit At"
+        }
+      },
+      "required": [
+        "position_id",
+        "requested_stop_usd",
+        "target_action",
+        "requested_target_usd",
+        "requested_next_review_at",
+        "requested_latest_exit_at"
+      ],
+      "title": "AlphaModify",
+      "type": "object"
+    },
+    "AlphaOpen": {
+      "additionalProperties": false,
+      "properties": {
+        "instrument_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Instrument Id",
+          "type": "string"
+        },
+        "symbol": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Symbol",
+          "type": "string"
+        },
+        "strategy_label": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Strategy Label",
+          "type": "string"
+        },
+        "thesis": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Thesis",
+          "type": "string"
+        },
+        "desired_notional_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Desired Notional Usd"
+        },
+        "desired_quantity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Desired Quantity"
+        },
+        "entry_limit_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Entry Limit Usd"
+        },
+        "entry_expires_at": {
+          "format": "date-time",
+          "title": "Entry Expires At",
+          "type": "string"
+        },
+        "hard_stop_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Hard Stop Usd"
+        },
+        "latest_exit_at": {
+          "format": "date-time",
+          "title": "Latest Exit At",
+          "type": "string"
+        },
+        "target_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Target Usd"
+        },
+        "next_review_at": {
+          "format": "date-time",
+          "title": "Next Review At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instrument_id",
+        "symbol",
+        "strategy_label",
+        "thesis",
+        "desired_notional_usd",
+        "desired_quantity",
+        "entry_limit_usd",
+        "entry_expires_at",
+        "hard_stop_usd",
+        "latest_exit_at",
+        "target_usd",
+        "next_review_at"
+      ],
+      "title": "AlphaOpen",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "ABSTAIN",
+        "OPEN",
+        "HOLD",
+        "MODIFY",
+        "CLOSE"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "open": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AlphaOpen"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hold": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AlphaHold"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "modify": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AlphaModify"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "close": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AlphaClose"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "action",
+    "reason",
+    "open",
+    "hold",
+    "modify",
+    "close"
+  ],
+  "title": "AlphaDecision",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:autonomous-trader:alpha-decision:1.0",
+  "description": "Compact model-owned alpha intent. Structural validity never authorizes execution."
+}

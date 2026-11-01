@@ -1,0 +1,859 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:autonomous-trader:trade-decision:1.0",
+  "title": "TradeDecisionV1 \u2014 proposal only",
+  "description": "Canonical design contract. Structural validity never authorizes execution. Compile to the provider-supported Structured Outputs subset and enforce report semantics independently.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "1.0"
+      ]
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "context_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "context_hash": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "opportunity_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "portfolio_state_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "policy_hash": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "capability_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "strategy_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "strategy_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "strategy_artifact_hash": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "ABSTAIN",
+        "REQUEST_DATA",
+        "PROPOSE_ENTRY",
+        "PROPOSE_AMENDMENT",
+        "PROPOSE_EXIT",
+        "HOLD"
+      ]
+    },
+    "entry_plan": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EntryPlan"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "amendment": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Amendment"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "exit_request": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ExitRequest"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "data_request": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DataRequest"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "forecast": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Forecast"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "maxItems": 64
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "maxItems": 8
+    },
+    "missing_data": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "maxItems": 8
+    },
+    "reasoning_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "review_triggers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConditionGroup"
+      },
+      "maxItems": 8
+    }
+  },
+  "required": [
+    "schema_version",
+    "decision_id",
+    "context_id",
+    "context_hash",
+    "opportunity_id",
+    "portfolio_state_version",
+    "policy_hash",
+    "capability_version",
+    "strategy_id",
+    "strategy_version",
+    "strategy_artifact_hash",
+    "created_at",
+    "valid_until",
+    "action",
+    "entry_plan",
+    "amendment",
+    "exit_request",
+    "data_request",
+    "forecast",
+    "evidence_ids",
+    "contradictions",
+    "missing_data",
+    "reasoning_summary",
+    "review_triggers"
+  ],
+  "$defs": {
+    "Predicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "feature_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "LT",
+            "LTE",
+            "GT",
+            "GTE",
+            "EQ",
+            "NEQ"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "persistence_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 600000
+        }
+      },
+      "required": [
+        "feature_id",
+        "source_id",
+        "operator",
+        "value",
+        "persistence_ms"
+      ]
+    },
+    "ConditionGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "join": {
+          "type": "string",
+          "enum": [
+            "ALL",
+            "ANY"
+          ]
+        },
+        "predicates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Predicate"
+          },
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "join",
+        "predicates"
+      ]
+    },
+    "SizingRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": [
+            "SHARES",
+            "USD_NOTIONAL"
+          ]
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "minimum_acceptable_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        }
+      },
+      "required": [
+        "unit",
+        "amount",
+        "minimum_acceptable_quantity"
+      ]
+    },
+    "Protection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initial_stop_usd": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "trigger_reference": {
+          "type": "string",
+          "enum": [
+            "TRADE",
+            "BID",
+            "ASK"
+          ]
+        },
+        "trigger_source_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "execution_policy_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "mechanism": {
+          "type": "string",
+          "enum": [
+            "BROKER_STOP_MARKET",
+            "BROKER_STOP_LIMIT",
+            "LOCAL_MONITORED_STOP"
+          ]
+        },
+        "stop_limit_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "initial_stop_usd",
+        "trigger_reference",
+        "trigger_source_id",
+        "execution_policy_id",
+        "mechanism",
+        "stop_limit_usd"
+      ]
+    },
+    "Target": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "price_usd": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "fraction_of_initial_quantity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "price_usd",
+        "fraction_of_initial_quantity"
+      ]
+    },
+    "Trailing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "AMOUNT",
+            "PERCENT",
+            "FEATURE_RULE"
+          ]
+        },
+        "activation_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConditionGroup"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "distance": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "rule_id",
+        "mode",
+        "activation_rule",
+        "distance"
+      ]
+    },
+    "EntryPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instrument_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "ticker": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "LONG"
+          ]
+        },
+        "entry_condition": {
+          "$ref": "#/$defs/ConditionGroup"
+        },
+        "entry_order_type": {
+          "type": "string",
+          "enum": [
+            "LIMIT",
+            "MARKET",
+            "STOP_LIMIT"
+          ]
+        },
+        "session": {
+          "type": "string",
+          "enum": [
+            "CORE"
+          ]
+        },
+        "time_in_force": {
+          "type": "string",
+          "enum": [
+            "DAY"
+          ]
+        },
+        "maximum_entry_usd": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "limit_price_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trigger_price_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "entry_expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sizing": {
+          "$ref": "#/$defs/SizingRequest"
+        },
+        "protection": {
+          "$ref": "#/$defs/Protection"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Target"
+          },
+          "maxItems": 8
+        },
+        "trailing": {
+          "$ref": "#/$defs/Trailing"
+        },
+        "max_holding_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 23400
+        },
+        "latest_exit_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "invalidation": {
+          "$ref": "#/$defs/ConditionGroup"
+        },
+        "partial_fill_policy_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "max_spread_bps": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "strategy_episode_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "instrument_id",
+        "ticker",
+        "direction",
+        "entry_condition",
+        "entry_order_type",
+        "session",
+        "time_in_force",
+        "maximum_entry_usd",
+        "limit_price_usd",
+        "trigger_price_usd",
+        "entry_expires_at",
+        "sizing",
+        "protection",
+        "targets",
+        "trailing",
+        "max_holding_seconds",
+        "latest_exit_at",
+        "invalidation",
+        "partial_fill_policy_id",
+        "max_spread_bps",
+        "strategy_episode_id"
+      ]
+    },
+    "Amendment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "current_plan_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "current_plan_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requested_stop_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requested_targets": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Target"
+              },
+              "maxItems": 8
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requested_trailing": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Trailing"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requested_latest_exit_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requested_invalidation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConditionGroup"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "position_id",
+        "current_plan_id",
+        "current_plan_version",
+        "requested_stop_usd",
+        "requested_targets",
+        "requested_trailing",
+        "requested_latest_exit_at",
+        "requested_invalidation"
+      ]
+    },
+    "ExitRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "current_plan_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "REDUCE",
+            "CLOSE"
+          ]
+        },
+        "requested_quantity": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "execution_policy_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "reason_code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "position_id",
+        "current_plan_id",
+        "mode",
+        "requested_quantity",
+        "execution_policy_id",
+        "reason_code"
+      ]
+    },
+    "DataRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "query_type": {
+          "type": "string",
+          "enum": [
+            "QUOTE_REFRESH",
+            "FILING_EXCERPT",
+            "NEWS_REVISION",
+            "EVENT_CALENDAR",
+            "STRATEGY_EVIDENCE"
+          ]
+        },
+        "instrument_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "maxItems": 32
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "query_type",
+        "instrument_id",
+        "evidence_ids",
+        "reason"
+      ]
+    },
+    "Forecast": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_definition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "horizon_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 23400
+        },
+        "raw_probability": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_gross_return_bps": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "estimated_execution_cost_bps": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "net_return_quantile_10_bps": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "net_return_quantile_50_bps": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "net_return_quantile_90_bps": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calibration_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "estimate_provenance": {
+          "type": "string",
+          "enum": [
+            "MODEL_JUDGMENT",
+            "QUALIFIED_ESTIMATOR",
+            "UNAVAILABLE"
+          ]
+        }
+      },
+      "required": [
+        "event_definition",
+        "horizon_seconds",
+        "raw_probability",
+        "expected_gross_return_bps",
+        "estimated_execution_cost_bps",
+        "net_return_quantile_10_bps",
+        "net_return_quantile_50_bps",
+        "net_return_quantile_90_bps",
+        "calibration_id",
+        "estimate_provenance"
+      ]
+    }
+  }
+}
